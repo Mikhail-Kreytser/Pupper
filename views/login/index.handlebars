@@ -1,42 +1,42 @@
 <link href="/css/login.css" rel="stylesheet">
-<div class="row login-bg"></div>
-<div class="login-content container">
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-0 col-xs-8 col-xs-offset-2">
-      {{#each error}}
-        <div class="alert alert-danger">{{this}}</div>
-      {{/each}}
-      <h1 class="text-center">Login</h1>
-      <hr class="small">
-      <form name="login" action="/login" method="post">
-        <div class="row control-group">
-          <div class="form-group col-sm-offset-2 col-sm-8 floating-label-form-group controls">
-            <label>Email Address</label>
-            <input type="email" class="input-field form-control" placeholder="Email Address" name="email" required data-validation-required-message="Please enter your email address." spellcheck="false" autocomplete="false">
-            <p class="help-block text-danger"></p>
+<div class="login-bg">
+  <div class="login-content container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-0 col-xs-8 col-xs-offset-2">
+        {{#each error}}
+          <div class="alert alert-danger">{{this}}</div>
+        {{/each}}
+        <h1 class="text-center">Login</h1>
+        <hr class="small">
+        <form name="login" action="/login" method="post">
+          <div class="row control-group">
+            <div class="form-group col-sm-offset-2 col-sm-8 floating-label-form-group controls">
+              <label>Email Address</label>
+              <input type="email" class="input-field form-control" placeholder="Email Address" name="email" required data-validation-required-message="Please enter your email address." spellcheck="false" autocomplete="false">
+              <p class="help-block text-danger"></p>
+            </div>
           </div>
-        </div>
-        <div class="row control-group">
-          <div class="form-group col-sm-offset-2 col-sm-8 floating-label-form-group controls">
-            <label>Password</label>
-            <input type="password" class="input-field form-control" placeholder="Password" name="password" required data-validation-required-message="Please enter your password." spellcheck="false" autocomplete="false">
-            <p class="help-block text-danger"></p>
+          <div class="row control-group">
+            <div class="form-group col-sm-offset-2 col-sm-8 floating-label-form-group controls">
+              <label>Password</label>
+              <input type="password" class="input-field form-control" placeholder="Password" name="password" required data-validation-required-message="Please enter your password." spellcheck="false" autocomplete="false">
+              <p class="help-block text-danger"></p>
+            </div>
           </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="form-group col-sm-offset-2 col-sm-8 text-center">
-              <button type="submit" class="login-btn btn btn-default">Login</button>
+          <br>
+          <div class="row">
+            <div class="form-group col-sm-offset-2 col-sm-8 text-center">
+                <button type="submit" class="login-btn btn btn-default">Login</button>
+            </div>
           </div>
-        </div>
-      </form>
-    </div>
-    <div class="info col-sm-6">
-      <img src="/img/puppy-portrait1.jpg" class="puppy1 img-fluid img-rounded" alt="">
-      <img src="/img/puppy-portrait2.jpg" class="puppy2 img-fluid img-rounded" alt="">
-      <h1 class="slogan">Pupper.</h1>
-      <h1 class="slogan">A new way to meet puppies.</h1>
+        </form>
+      </div>
+      <div class="info col-sm-6">
+        <img src="/img/puppy-portrait1.jpg" class="puppy1 img-fluid img-rounded" alt="">
+        <img src="/img/puppy-portrait2.jpg" class="puppy2 img-fluid img-rounded" alt="">
+        <h1 class="slogan">Pupper.</h1>
+        <h1 class="slogan">A new way to meet puppies.</h1>
+      </div>
     </div>
   </div>
 </div>
-
