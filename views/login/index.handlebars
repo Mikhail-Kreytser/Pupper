@@ -36,7 +36,25 @@
         <img src="/img/puppy-portrait2.jpg" class="puppy2 img-fluid img-rounded" alt="">
         <h1 class="slogan">Pupper.</h1>
         <h1 class="slogan">A new way to meet puppies.</h1>
+        <br><br><br><br>
       </div>
     </div>
   </div>
 </div>
+<script>
+
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1;
+  var yyyy = ( today.getFullYear() - 18 );
+   if(dd<10){
+          dd='0'+dd
+      } 
+      if(mm<10){
+          mm='0'+mm
+      } 
+
+  today = yyyy +'-'+mm+'-'+dd;
+  document.getElementById("datefield").setAttribute("min", today);
+
+</script>

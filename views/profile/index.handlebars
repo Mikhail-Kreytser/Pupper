@@ -43,7 +43,7 @@
                                     </tr>
                                     <tr>
                                         <td>Email:</td>
-                                        <td>{{user.email}}</td>
+                                        <td>{{user.email}}</td>
                                     </tr>
                                     <tr>
                                         <td>Birthday:</td>
@@ -70,7 +70,10 @@
     <div class="well well-lg col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       {{#each pets}}
       <label></label>
-      <p>{{this.birthday.profileImage:}}</p>
+      <div class="span3">
+      <img src="/profile_pics/{{this.profileImage}}" class="img-rounded" alt="" style="width:200px">
+      </div>
+
       <hr class="divider">
       <label>Pet's name</label>
       <p>{{this.name}}</p>

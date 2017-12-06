@@ -1,3 +1,10 @@
+<link href="/css/set-up.css" rel="stylesheet">
+<link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<script src="/js/previewImage.js"></script>
+<meta charset=utf-8 />
+
 <header class="intro-header" style="background-image: url('/img/dogbackground.jpg')">
   <div class="container">
     <div class="row">
@@ -21,61 +28,57 @@
           
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <form name="upload-profile" action="/pet-set-up" method="post" enctype="multipart/form-data">
-        <div class="row control-group">
-          <div class="form-group col-xs-12 floating-label-form-group controls">
+      <div class="row">
+      <div class="profile-form col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form name="upload-profile" action="/pet-set-up" method="post" enctype="multipart/form-data">
+          <div class="form-group col-xs-12 controls control-group text-center">
+            <label class="upload-label">Pety Picture</label>
+            <br>
+            <img class="profile-img-display img-circle" id="preview" src="#" alt="" />
+            <br>
+            <input class="profile-upload" type="file" id="file" name="profileImage" onchange="displayImage(this);"/>
+            <label class="btn btn-default" for="file">Choose a file...</label>
+            <br>
+          </div>
+          <div class="form-group col-xs-12 floating-label-form-group controls control-group">
             <label>Name</label>
             <input type="text" class="form-control" placeholder="Name" name="name" require data-validation-required-message="Please fill the name.">
             <p class="help-block text-danger"></p>
+            <br>
           </div>
-        </div>
-
-        <div class="row control-group">
-          <div class="form-group col-xs-12 floating-label-form-group controls">
+          <div class="form-group col-xs-12 floating-label-form-group controls control-group">
             <label>Breed</label>
             <input type="text" class="form-control" placeholder="Breed" name="breed" require data-validation-required-message="Please fill the breed.">
             <p class="help-block text-danger"></p>
+            <br>
           </div>
-        </div>
-
-        <div class="row control-group">
-          <div class="form-group col-xs-12 floating-label-form-group controls">
+          <div class="form-group col-xs-12 floating-label-form-group controls control-group">
             <label>Date of Birth</label>
-            <input type="date" class="form-control" placeholder="DateOfBirth" name="birthday" require data-validation-required-message="Please enter your birthday">
+            <input type="date" id="bday" class="form-control" placeholder="DateOfBirth" name="birthday" require data-validation-required-message="Please enter the birthday">
             <p class="help-block text-danger"></p>
+            <br>
           </div>
-        </div>
-
-        <div class="row control-group">
-          <div class="form-group col-xs-12 floating-label-form-group controls">
+          <div class="form-group col-xs-12 floating-label-form-group controls control-group">
             <label>Bio</label>
-            <input type="text" class="form-control" placeholder="Bio" name="bio" require data-validation-required-message="Please fill in your bio.">
+            <textarea type="text" class="bio form-control" rows="5" placeholder="Bio" name="bio" require data-validation-required-message="Please fill in the pet bio."></textarea>
             <p class="help-block text-danger"></p>
           </div>
-        </div>
-
-        <div class="row control-group">
-          <div class="form-group col-xs-12 floating-label-form-group controls">
+          <br>
+          <div class="form-group col-xs-12 floating-label-form-group controls control-group">
             <label>Hobbies</label>
-            <input type="text" class="form-control" placeholder="Hobbies" name="hobbies" require data-validation-required-message="List any hobbies you have.">
+            <input type="text" class="form-control" placeholder="Hobbies" name="hobbies" require data-validation-required-message="List any pet hobbies.">
             <p class="help-block text-danger"></p>
+            <br>
           </div>
-        </div>
 
-        <div class="row control-group">
-          <div class="form-group col-xs-12 floating-label-form-group controls">
-            <label >Upload a Profile Picture:</label>
-            <input type="file" name="profileImage" id="profileImage" require/>
-            <span class="hint">Supported files: jpg, jpeg, png.</span>
+          <div class="form-group col-xs-12 floating-label-form-group controls control-group">
+            <hr class="divider">
+            <button type="submit" class="btn btn-default">Done</button>
           </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="form-group col-xs-12">
-              <button type="submit" class="btn btn-default">Done</button>
-          </div>
-        </div>
-      </form>
+        </form>
+
+
+      <form name="upload-profile" action="/pet-set-up" method="post" enctype="multipart/form-data">
     </div>
   </div>
 </div>

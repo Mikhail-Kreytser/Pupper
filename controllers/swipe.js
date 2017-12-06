@@ -29,20 +29,29 @@ module.exports = {
     models.User.addUser(req.other_user, {through: {status: res.status}})
   },*/
   req.user.getProfile().then((user_profile) => {
-      models.Profile.findAll({
+      models.Pet.findAll({
         include: [{
           model: models.User
         }],
-        where: {
-          zipCode: user_profile.zipCode,
-          userId: {[Op.ne]:req.user.id},
-        }
-      }).then((local_users) =>{
-        res.render('swipe', { user: req.user,  local_users, success: req.flash('success') });
+//        where: {
+//          zipCode: user_profile.zipCode,
+//          userId: {[Op.ne]:req.user.id},
+//        }
+      }).then((local_pets) =>{
+        res.render('swipe', { profile: user_profile, user: req.user,  local_pets, success: req.flash('success') });
       }); 
     });
   },
+
   submit(req, res) {
-    models.User.addUser(req.other_user, {through: {status: res.status}})
+    models.Pet.findOne({
+      where: {
+        id: req.body.pet,
+      },
+    }).then((pet)=>{
+      req.user.addMatchedpet(pet, {through: {status: res.status}}).then(() => res.send('good'));
+    })
+
   },
+
 };

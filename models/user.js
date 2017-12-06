@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
     models.User.hasMany(models.Post);
     models.User.hasOne(models.Profile);
     models.User.hasMany(models.Pet);
-    models.User.belongsToMany(models.User, {as:'other_user', through: 'connection'});
+    models.User.belongsToMany(models.Pet, { as: 'Matchedpet', through: models.Connection, foreignKey: 'userId'});
   };
 
   User.beforeCreate(user =>
