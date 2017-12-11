@@ -1,48 +1,92 @@
+<link href="/css/profile.css" rel="stylesheet">
+
 {{#each success}}
   <div class="alert alert-danger">{{this}}</div>
 {{/each}}
 
-<header class="intro-header" style="background-image: url('/img/about-bg.jpg')">
+<header class="intro-header" style="background-image: url('/img/cover1.jpg')">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-heading">
-          <h1>{{user.username}}</h1>
+          <h1>{{profile.firstName}} {{profile.lastName}}</h1>
           <hr class="small">
-          <span class="subheading">{{user.firstName}} {{user.lastName}}</span>
+          <span class="subheading">{{user.username}}</span>
         </div>
       </div>
     </div>
   </div>
 </header>
 
-<div class="container">
-  <div class="row">
-    <div class="col-lg-1 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <img src="/profile_pics/{{profile.profileImage}}" class="img-rounded" alt="" style="width:200px">
-    </div>
-    <hr class="divider">
-    <br>
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <label>DATE OF BIRTH</label>
-      <p>{{profile.birthday}}</p>
-      <hr class="divider">
-      <label>BIO</label>
-      <p>{{profile.bio}}</p>
-      <hr class="divider">
-      <label>HOBBIES</label>
-      <p>{{profile.hobbies}}</p>
-      <hr class="divider">
+<!-- This is a commment-->
+<br><br>
+
+<div class="container ">
+        <div class="row-fluid user-infos col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="span10 offset1">
+                <div class="panel ">
+                    <div class="panel-heading">
+                        <Strong>User information</Strong>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row-fluid">
+                            <div class="span3">
+                                <img src="/profile_pics/{{profile.profileImage}}" class="img-rounded" alt="" style="width:200px">
+                            </div>
+                            <div class="span6">
+                                <br/>
+                                <table class="table table-condensed table-responsive table-user-information">
+                                    <tbody>
+                                    <tr>
+                                        <td>User name:</td>
+                                        <td>{{user.username}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email:</td>
+                                        <td>{{user.email}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Birthday:</td>
+                                        <td>{{profile.birthday}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>BIO:</td>
+                                        <td>{{profile.bio}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hobbies:</td>
+                                        <td>{{profile.hobbies}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+    <div class="well well-lg col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       {{#each pets}}
-      <label>pet's name</label>
-      <p>{{this.name}}</p>
+      <label></label>
+      <div class="span3">
+      <img src="/profile_pics/{{this.profileImage}}" class="img-rounded" alt="" style="width:200px">
+      </div>
+
       <hr class="divider">
+      <label>Pet's name</label>
+      <p>{{this.name}}</p>
+      
+      <label>Pet's hobbies</label>
+      <p>{{this.birthday}}</p>
+      
       <label> Pet's breed </label>
       <p>{{this.breed}}</p>
-      <hr class="divider">
+      
       <label>Pet's hobbies</label>
       <p>{{this.hobbies}}</p>
-      <hr class="divider">
+      
       {{/each}}
     </div>
   </div>

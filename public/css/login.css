@@ -1,3 +1,12 @@
+a {
+  color: #000;
+}
+
+a:focus, 
+a:hover {
+  color:#FF9AAB
+}
+
 body {
   background-color: white;
 }
@@ -10,14 +19,18 @@ hr.small {
   border-color: #000
 }
 
+.container-fluid {
+  background-color: #FF9AAB;
+}
+
 .info {
   margin-top: 150px;
 }
 
 .login-bg {
   background-image: linear-gradient(to top, 
-    rgba(255,255,255,1) 0%,
-    rgba(255,255,255,0) 2%,
+    rgba(255,255,255,.0) 0%, 
+    rgba(255,255,255,0) 20%,
     rgba(255,255,255,1) 70%,
     rgba(255,255,255,1) 100%
   ),
@@ -83,6 +96,10 @@ form .row:first-child .floating-label-form-group {
   background-color: #FF778D;
 }
 
+.navbar-default .navbar-nav>li>a:hover {
+  color: black;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -95,6 +112,32 @@ input:-webkit-autofill:active {
 }
 
 @media only screen and (max-width: 768px)  {
+  .navbar-default {
+    border: none !important;
+  }
+
+  .navbar-header.page-scroll {
+    background-color: #FF778D;
+  }
+
+  .navbar-toggle {
+    color: black !important;
+    background-color: white;
+  }
+
+  .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    -webkit-box-shadow: inset 0 0px 0;
+    background-color: #FF778D;
+    border: none !important;
+  }
+
+  .navbar-default .navbar-nav>li>a {
+    color: white;
+  }
+  .navbar-default .navbar-nav>li>a:hover {
+    color: black;
+  }
+
   h1 {
     margin-top: 150px;
   }
@@ -108,16 +151,6 @@ input:-webkit-autofill:active {
     z-index: -1;
   }
 }
-
-  h1 {
-    margin-top: 150px;
-  }
-
-  h1.slogan {
-    font-size: 24px;
-    width: 300px;
-    margin: 40px 0px 0px 75px;
-  }
 
 @media only screen and (min-width: 768px) {
   h1 {
@@ -144,11 +177,9 @@ input:-webkit-autofill:active {
       margin-left: -75px;
     }
   }
-  .puppy {
-    width: 150px;
-  }
 
   .puppy1 {
+    width: 150px;
     margin-left: 75px;
     transform-style: preserve-3d;
     transform: rotateZ(-3deg);
@@ -157,6 +188,7 @@ input:-webkit-autofill:active {
   .puppy2 {
     position: absolute;
     margin-left: -75px;
+    width: 150px;
     animation-name: rotate2;
     animation-duration: 1s;
     transform: rotateZ(7deg);
@@ -167,13 +199,6 @@ input:-webkit-autofill:active {
   h1 {
     margin-top: 250px;
   }
-
-  h1.slogan {
-    font-size: 36px;
-    width: 300px;
-    margin: 20px 0px 0px 125px;
-  }
-
   @keyframes rotate1 {
     0% {
       transform: rotateZ(-3deg);
@@ -189,11 +214,8 @@ input:-webkit-autofill:active {
     }
   }
 
-  .puppy {
-    width: 250px;
-  }
-
   .puppy1 {
+    width: 250px;
     margin-left: 100px;
     transform-style: preserve-3d;
     transform: rotateZ(-3deg);
@@ -202,12 +224,15 @@ input:-webkit-autofill:active {
   .puppy2 {
     position: absolute;
     margin-left: -100px;
+    width: 250px;
     animation-name: rotate1;
     animation-duration: 1s;
     transform: rotateZ(7deg);
   }
 
-  .login-bg {
-    padding-bottom: 250px;
+  h1.slogan {
+    font-size: 36px;
+    width: 300px;
+    margin: 20px 0px 0px 125px;
   }
 }
