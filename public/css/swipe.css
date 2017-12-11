@@ -1,0 +1,53 @@
+.target-pet {
+  object-fit: none;
+  object-position: center;
+  display: inline-block;
+  margin-top: 100px;
+  height: 600px;
+  width: 350px;
+  box-shadow: 5px 5px 5px -3px;
+}
+
+.arrow-buttons {
+  display: inline-block;
+  position: relative;
+  font-size: 60px;
+  margin-top: 700px;
+  padding-left: 20px;
+  padding-right: 20px;
+  opacity: .5;
+  width: auto;
+  height: auto;
+  border-radius: 80px;
+  border: 0px;
+}
+
+.yes-button {
+  background-color: green;
+  color: white;
+}
+
+.no-button {
+  background-color: red;
+  color: white;
+}
+
+.yes-button:hover {
+  background-color: seagreen;
+  opacity: 0.7;
+}
+
+.yes-button:active {
+  background-color: darkgreen;
+  opacity: 0.8;
+}
+
+.no-button:hover {
+  background-color: lightcoral;
+  opacity: 0.7;
+}
+
+.no-button:active {
+  background-color: darkred;
+  opacity: 0.7;
+}
