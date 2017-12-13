@@ -27,7 +27,7 @@ module.exports = {
             userId:req.user.id,
             petId: pets[i].id,
           }
-        }).then((connection)=>{
+        }).then((connect)=>{
         });
       }
     });
@@ -51,8 +51,10 @@ module.exports = {
           },
         }],
       }).then((connection) => {
-        res.render('swipe', { profile: userProfile, user: req.user, pet: connection.pet, });
-      });
+        res.render('swipe', { profile: userProfile, user: req.user, pet: connection.pet });
+      }).catch(() =>{
+        res.render('swipe', { profile: userProfile, user: req.user, error : "No more Pets" });
+      })
 
     });
   },
@@ -107,8 +109,11 @@ module.exports = {
               },
             }],
           }).then((pet) =>{
-          res.send(pet);
-        });
+            if(pet)
+              res.send(pet);
+            else 
+              res.send("No more Pets");
+          });
         });
       });
     });
