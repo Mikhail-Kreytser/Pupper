@@ -3,26 +3,40 @@
 {{/each}}
 
 <link href="/css/swipe.css" rel="stylesheet">
+
 <div class="container">
   <div class="row text-center">
     <div class="col-sm-3">
       <Button class="no-button arrow-buttons">&#10006;</Button>
     </div>
     <div class="col-sm-6">
-      <img src="http://cdn.akc.org/content/hero/puppy-boundaries_header.jpg" class="target-pet img-rounded" alt="">
+      <img src="/profile_pics/{{pet.profileImage}}" id="petImg" class="target-pet img-rounded">
     </div>
     <div class="col-sm-3">
-      <Button class="yes-button arrow-buttons">&#10004;</Button>
+      <button class="yes-button arrow-buttons" id="yes">&#10004;</button>
+      <h1 id="petId">{{pet.id}}</h1>
     </div>
   </div>
   </div>
 </div>
 
-<script type="text/javascript">
+<script>
+document.getElementById("yes").onclick = yesFunction;
+
+function yesFunction() {
+  console.log("clicked");
+  pet_id = document.getElementById("petId").innerHTML;
   $.ajax({
-    url: '/swipe/next',
+    url: '/swipe',
+    type: 'post',
+    data: {'petId': pet_id, 'status': 'Matched'},
     success: function (response) {
-      console.log(response);
+      console.log('success');
+      console.log(response.pet)
+      document.getElementById("petImg").src = `/profile_pics/${response.pet.profileImage}`;
+      document.getElementById("petId").innerHTML = response.pet.id;
     }
   });
-</script
+}
+
+</script>
