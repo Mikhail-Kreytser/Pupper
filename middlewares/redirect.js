@@ -1,4 +1,7 @@
 const redirect = {};
+const models = require('../models');
+const Op = models.Sequelize.Op;
+
 
 redirect.ifLoggedIn = (route) =>
   (req, res, next) => (req.user ? res.redirect(route) : next());
@@ -31,6 +34,26 @@ redirect.ifNoPetSetUp = (route = '/pet-set-up') =>
       else
         res.redirect(route);
     })
+  };
+
+redirect.ifNotMatched = (route = '/profile') =>
+  (req, res, next) => {
+    if(req.params.petId == null)
+        res.redirect(route);
+    else{
+      models.Connection.findOne({
+        where:{
+          petId: req.params.petId,
+          userId: req.user.id,
+          status: "Matched",
+        },
+      }).then((connection) => {
+        if (connection !== null)
+          next();
+        else
+          res.redirect(route);
+      });
+    }
   };
 
 redirect.ifNotLoggedIn = (route = '/login') =>

@@ -1,0 +1,53 @@
+<link href="/css/profile.css" rel="stylesheet">
+
+{{#each success}}
+  <div class="alert alert-danger">{{this}}</div>
+{{/each}}
+
+{{!-- <header class="intro-header" style="background-image: url('/img/cover1.jpg')">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-heading">
+          <h1>{{profile.firstName}} {{profile.lastName}}</h1>
+          <hr class="small">
+          <span class="subheading">{{user.username}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header> --}}
+
+<!-- This is a commment-->
+<br><br>
+
+<br><br>
+<br><br>
+<div class="container ">
+
+    <div class="well well-lg col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      {{#if pet}}
+      <label></label>
+      <center>
+        <div class="span3">
+          <img src="/profile_pics/{{pet.profileImage}}" class="img-rounded" alt="" style="width:200px">
+        </div>
+      </center>
+
+      <hr class="divider">
+      <label>Pet's name</label>
+      <p>{{pet.name}}</p>
+      
+      <label>Pet's hobbies</label>
+      <p>{{pet.birthday}}</p>
+      
+      <label> Pet's breed </label>
+      <p>{{pet.breed}}</p>
+      
+      <label>Pet's hobbies</label>
+      <p>{{pet.hobbies}}</p>
+      
+      {{/if}}
+    </div>
+  </div>
+</div>

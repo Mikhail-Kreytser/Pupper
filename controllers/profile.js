@@ -7,6 +7,7 @@ module.exports = {
     const router = express.Router();
 
     router.get('/', Redirect.ifNotLoggedIn(), Redirect.ifNoSetUp(), Redirect.ifNoPetSetUp(), this.index);
+    router.get('/pet/:petId', Redirect.ifNotLoggedIn(), Redirect.ifNoSetUp(), Redirect.ifNoPetSetUp(),Redirect.ifNotMatched(), this.show);
 
     return router;
   },
@@ -18,6 +19,15 @@ module.exports = {
         res.render('profile', { user: req.user, profile: profile, pets, success: req.flash('success')});
       });
     });
+  },
+  show(req, res) {
+    models.Pet.findOne({
+      where:{
+        id: req.params.petId,
+      }
+    }).then((pet)=>{
+      res.render('profile/pet',{pet});
+    })
   },
 };
 

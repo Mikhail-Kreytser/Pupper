@@ -43,7 +43,8 @@ module.exports = (sequelize, DataTypes) => {
     models.User.hasOne(models.Profile);
     models.User.hasMany(models.Pet);
     models.User.belongsToMany(models.Pet, { as: 'Matchedpet', through: models.Connection, foreignKey: 'userId'});
-    //models.User.hasMany(models.Connection);
+    models.User.hasMany(models.Connection);
+    models.User.hasMany(models.Message,{as: 'sender'});
   };
 
   User.beforeCreate(user =>
@@ -54,6 +55,5 @@ module.exports = (sequelize, DataTypes) => {
     }).then((hashedPw) => {
       user.password_hash = hashedPw;
     }));
-
   return User;
 };

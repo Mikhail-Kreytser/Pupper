@@ -14,6 +14,23 @@ module.exports = {
     return router;
   },
   index(req, res) {
+    models.Pet.findAll({
+      where:{
+        userId: {
+          [Op.ne]: req.user.id
+        },
+      },
+    }).then((pets) => {
+      for(var i = 0; i < pets.length; i++){
+        models.Connection.findOrCreate({
+          where:{
+            userId:req.user.id,
+            petId: pets[i].id,
+          }
+        }).then((connection)=>{
+        });
+      }
+    });
     req.user.getProfile().then((userProfile) => {
       res.render('swipe', { profile: userProfile, user: req.user,  });
     });
@@ -33,9 +50,13 @@ module.exports = {
           },
         },{
           model: models.Pet,
+          where:{
+            userId: {
+              [Op.ne]: req.user.id
+            },
+          },
         }],
       }).then((pet) =>{
-        console.log(pet);
         res.send(pet);
       });
     });
@@ -44,7 +65,7 @@ module.exports = {
   submit(req, res) {
     models.Pet.findOne({
       where: {
-        id: req.body.pet,
+        id: req.body.petId,
       },
     }).then((pet)=>{
       models.Connection.update({
