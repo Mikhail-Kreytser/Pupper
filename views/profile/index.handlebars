@@ -22,75 +22,74 @@
 <br><br>
 
 <div class="container ">
-        <div class="row-fluid user-infos col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="span10 offset1">
-                <div class="panel ">
-                    <div class="panel-heading">
-                        <Strong>User information</Strong>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row-fluid">
-                            <div class="span3">
-                                <img src="/profile_pics/{{profile.profileImage}}" class="img-rounded" alt="" style="width:200px">
-                            </div>
-                            <div class="span6">
-                                <br/>
-                                <table class="table table-condensed table-responsive table-user-information">
-                                    <tbody>
-                                    <tr>
-                                        <td>User name:</td>
-                                        <td>{{user.username}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Email:</td>
-                                        <td>{{user.email}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Birthday:</td>
-                                        <td>{{profile.birthday}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>BIO:</td>
-                                        <td>{{profile.bio}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hobbies:</td>
-                                        <td>{{profile.hobbies}}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
+  <div class="row-fluid user-infos col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <div class="span10 offset1">
+      <div class="panel ">
+        <div class="panel-heading">
+          <Strong>User information</Strong>
         </div>
-
-    <div class="well well-lg col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      {{#each pets}}
-      <label></label>
-      <div class="span3">
-      <img src="/profile_pics/{{this.profileImage}}" class="img-rounded" alt="" style="width:200px">
+        <div class="panel-body">
+          <div class="row-fluid">
+            <div class="span3">
+              <img src="/profile_pics/{{profile.profileImage}}" class="img-rounded" alt="" style="width:200px">
+            </div>
+            <div class="span6">
+              <br/>
+              <table class="table table-condensed table-responsive table-user-information">
+                <tbody>
+                  <tr>
+                    <td>User name:</td>
+                    <td>{{user.username}}</td>
+                  </tr>
+                  <tr>
+                    <td>Email:</td>
+                    <td>{{user.email}}</td>
+                  </tr>
+                  <tr>
+                    <td>Birthday:</td>
+                    <td>{{profile.birthday}}</td>
+                  </tr>
+                  <tr>
+                    <td>BIO:</td>
+                    <td>{{profile.bio}}</td>
+                  </tr>
+                  <tr>
+                    <td>Hobbies:</td>
+                    <td>{{profile.hobbies}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>      
       </div>
-
-      <hr class="divider">
-      <label>Pet's name</label>
-      <p>{{this.name}}</p>
-      
-      <label>Pet's birthday</label>
-      <p>{{this.birthday}}</p>
-      
-      <label> Pet's breed </label>
-      <p>{{this.breed}}</p>
-      
-      <label>Pet's hobbies</label>
-      <p>{{this.hobbies}}</p>
-      
-      {{/each}}
     </div>
   </div>
+  {{#each pets}}
+    <div class="well well-lg col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+      <label></label>
+      <div class="span3">
+        <img src="/profile_pics/{{this.profileImage}}" class="img-rounded" alt="" style="width:200px">
+        </div>
+
+        <hr class="divider">
+        <label>Pet's name</label>
+        <p>{{this.name}}</p>
+        
+        <label>Pet's birthday</label>
+        <p>{{this.birthday}}</p>
+        
+        <label> Pet's breed </label>
+        <p>{{this.breed}}</p>
+        
+        <label>Pet's hobbies</label>
+        <p>{{this.hobbies}}</p>
+      </div>
+    {{/each}}
+  </div>
 </div>
+
 <center>
   <form action="/pet-set-up">
     <input type="submit" class="btn btn-default" value="Add More Puppers" />

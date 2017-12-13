@@ -24,42 +24,45 @@
 <br><br>
 <br><br>
 <div class="container ">
-
-    {{#if connections}}
-      {{#each connections}}
+  {{#if connections}}
+    {{#each connections}}
       <div class="well well-lg col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <label></label>
-      <center>
-        <div class="span3">
-          <a href="/profile/pet/{{this.pet.id}}">
-            <img src="/profile_pics/{{this.pet.profileImage}}" class="img-rounded" alt="" style="width:200px">
-          </a>
-        </div>
-      </center>
-
-      <hr class="divider">
-      <label>Pet's name</label>
-      <p>{{this.pet.name}}</p>
-      
-      <label>Pet's birthday</label>
-      <p>{{this.pet.birthday}}</p>
-      
-      <label> Pet's breed </label>
-      <p>{{this.pet.breed}}</p>
-      
-      <label>Pet's hobbies</label>
-      <p>{{this.pet.hobbies}}</p>
-    </div>
-      
-      {{/each}}
-      {{else}}
-      <div class="well well-lg col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <label></label>
         <center>
-          <h3>
-            Sorry No Matches
-          </h3>
+          <div class="span3">
+            <a href="/profile/pet/{{this.pet.id}}">
+              <img src="/profile_pics/{{this.pet.profileImage}}" class="img-rounded" alt="" style="width:200px">
+            </a>
+          </div>
+        </center>
+
+        <hr class="divider">
+        <label>Pet's name</label>
+        <p>{{this.pet.name}}</p>
+        
+        <label>Pet's birthday</label>
+        <p>{{this.pet.birthday}}</p>
+        
+        <label> Pet's breed </label>
+        <p>{{this.pet.breed}}</p>
+        
+        <label>Pet's hobbies</label>
+        <p>{{this.pet.hobbies}}</p>
+        <center>
+          <form action="#">
+            <input type="submit" class="btn btn-default" value="Message" />
+          </form>
         </center>
       </div>
-      {{/if}}
+    {{/each}}
+  {{else}}
+    <div class="well well-lg col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <center>
+        <h3>
+          Sorry No Matches
+        </h3>
+      </center>
+    </div>
+  {{/if}}
   </div>
 </div>
