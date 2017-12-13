@@ -8,7 +8,6 @@ module.exports = {
     const router = express.Router();
 
     router.get('/', Redirect.ifNotLoggedIn(), Redirect.ifNoSetUp(), Redirect.ifNoPetSetUp(), this.index);
-    router.get('/next', Redirect.ifNotLoggedIn(), Redirect.ifNoSetUp(), Redirect.ifNoPetSetUp(), this.getPupper);
     router.post('/', this.submit);
     router.get('/matches', Redirect.ifNotLoggedIn(), Redirect.ifNoSetUp(), Redirect.ifNoPetSetUp(), this.getMatches);
 
@@ -33,12 +32,6 @@ module.exports = {
       }
     });
     req.user.getProfile().then((userProfile) => {
-      res.render('swipe', { profile: userProfile, user: req.user,  });
-    });
-  },
-
-  getPupper(req,res){
-    req.user.getProfile().then((user_profile) => {
       models.Connection.findOne({
         where:{
           status: "Pending",
@@ -57,9 +50,10 @@ module.exports = {
             },
           },
         }],
-      }).then((pet) =>{
-        res.send(pet);
+      }).then((connection) => {
+        res.render('swipe', { profile: userProfile, user: req.user, pet: connection.pet, });
       });
+
     });
   },
 
@@ -82,18 +76,40 @@ module.exports = {
       where: {
         id: req.body.petId,
       },
-    }).then((pet)=>{
+    }).then(()=>{
       models.Connection.update({
         status: req.body.status,
       },
       {
         where:{
           userId: req.user.id,
-          petId: req.body.pet,
+          petId: req.body.petId,
         },
         returning: true,
-      }).then((connection)=>{
-        res.sendStatus(200);
+      }).then((connection) => {
+        req.user.getProfile().then((user_profile) => {
+          models.Connection.findOne({
+            where:{
+              status: "Pending",
+            },
+            include: [{
+              model: models.User,
+              attributes: ['id'],
+              where:{
+                id: req.user.id,
+              },
+            },{
+              model: models.Pet,
+              where:{
+                userId: {
+                  [Op.ne]: req.user.id
+                },
+              },
+            }],
+          }).then((pet) =>{
+          res.send(pet);
+        });
+        });
       });
     });
   },

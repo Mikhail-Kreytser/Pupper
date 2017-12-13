@@ -51,3 +51,7 @@
   background-color: darkred;
   opacity: 0.7;
 }
+
+#petId {
+  visibility: hidden;
+}
