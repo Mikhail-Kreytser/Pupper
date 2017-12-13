@@ -1,6 +1,6 @@
 function displayImage(input) {
   if (input.files && input.files[0]) {
-    var extension = input.files[0].name.split('.').pop();
+    var extension = input.files[0].name.split('.').pop().toLowerCase();
     if (extension === "jpg" || extension === "png") {
       var reader = new FileReader();
 
