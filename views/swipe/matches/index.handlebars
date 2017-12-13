@@ -25,29 +25,32 @@
 <br><br>
 <div class="container ">
 
-    <div class="well well-lg col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      {{#if pet}}
+    
+      {{#each connections}}
+      <div class="well well-lg col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <label></label>
       <center>
         <div class="span3">
-          <img src="/profile_pics/{{pet.profileImage}}" class="img-rounded" alt="" style="width:200px">
+          <a href="/profile/pet/{{this.pet.id}}">
+            <img src="/profile_pics/{{this.pet.profileImage}}" class="img-rounded" alt="" style="width:200px">
+          </a>
         </div>
       </center>
 
       <hr class="divider">
       <label>Pet's name</label>
-      <p>{{pet.name}}</p>
+      <p>{{this.pet.name}}</p>
       
       <label>Pet's birthday</label>
-      <p>{{pet.birthday}}</p>
+      <p>{{this.pet.birthday}}</p>
       
       <label> Pet's breed </label>
-      <p>{{pet.breed}}</p>
+      <p>{{this.pet.breed}}</p>
       
       <label>Pet's hobbies</label>
-      <p>{{pet.hobbies}}</p>
-      
-      {{/if}}
+      <p>{{this.pet.hobbies}}</p>
     </div>
+      
+      {{/each}}
   </div>
 </div>

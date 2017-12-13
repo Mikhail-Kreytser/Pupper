@@ -10,6 +10,7 @@ module.exports = {
     router.get('/', Redirect.ifNotLoggedIn(), Redirect.ifNoSetUp(), Redirect.ifNoPetSetUp(), this.index);
     router.get('/next', Redirect.ifNotLoggedIn(), Redirect.ifNoSetUp(), Redirect.ifNoPetSetUp(), this.getPupper);
     router.post('/', this.submit);
+    router.get('/matches', Redirect.ifNotLoggedIn(), Redirect.ifNoSetUp(), Redirect.ifNoPetSetUp(), this.getMatches);
 
     return router;
   },
@@ -59,6 +60,20 @@ module.exports = {
       }).then((pet) =>{
         res.send(pet);
       });
+    });
+  },
+
+  getMatches(req, res){
+    models.Connection.findAll({
+      where:{
+        userId: req.user.id,
+        status: "Matched",
+      },
+      include: [{
+        model: models.Pet,
+      }],
+    }).then((connections) => {
+      res.render('swipe/matches', {connections});
     });
   },
 
