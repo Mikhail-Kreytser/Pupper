@@ -8,38 +8,36 @@ module.exports = {
     const router = express.Router();
 
     router.get('/', Redirect.ifNotLoggedIn(), Redirect.ifNoSetUp(), Redirect.ifNoPetSetUp(), this.index);
+    router.get('/next', Redirect.ifNotLoggedIn(), Redirect.ifNoSetUp(), Redirect.ifNoPetSetUp(), this.getPupper);
     router.post('/', this.submit);
 
     return router;
   },
   index(req, res) {
-/*    req.user.getProfile().then((user_profile) => {
-      models.Profile.findAll({
-        include: [{model: models.User}],
-        where: {
-          zipCode: user_profile.zipCode,
-          userId: {[Op.ne]:req.user.id},
-        }
-      }).then((local_users) =>{
-        res.render('swipe', { user: req.user,  local_users, success: req.flash('success') });
-      }); 
+    req.user.getProfile().then((userProfile) => {
+      res.render('swipe', { profile: userProfile, user: req.user,  });
     });
   },
-  submit(req, res) {
-    models.User.addUser(req.other_user, {through: {status: res.status}})
-  },*/
-  req.user.getProfile().then((user_profile) => {
-      models.Pet.findAll({
+
+  getPupper(req,res){
+    req.user.getProfile().then((user_profile) => {
+      models.Connection.findOne({
+        where:{
+          status: "Pending",
+        },
         include: [{
-          model: models.User
+          model: models.User,
+          attributes: ['id'],
+          where:{
+            id: req.user.id,
+          },
+        },{
+          model: models.Pet,
         }],
-//        where: {
-//          zipCode: user_profile.zipCode,
-//          userId: {[Op.ne]:req.user.id},
-//        }
-      }).then((local_pets) =>{
-        res.render('swipe', { profile: user_profile, user: req.user,  local_pets, success: req.flash('success') });
-      }); 
+      }).then((pet) =>{
+        console.log(pet);
+        res.send(pet);
+      });
     });
   },
 
@@ -49,9 +47,18 @@ module.exports = {
         id: req.body.pet,
       },
     }).then((pet)=>{
-      req.user.addMatchedpet(pet, {through: {status: res.status}}).then(() => res.send('good'));
-    })
-
+      models.Connection.update({
+        status: req.body.status,
+      },
+      {
+        where:{
+          userId: req.user.id,
+          petId: req.body.pet,
+        },
+        returning: true,
+      }).then((connection)=>{
+        res.sendStatus(200);
+      });
+    });
   },
-
 };
