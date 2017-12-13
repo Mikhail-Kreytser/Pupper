@@ -17,6 +17,13 @@
     color: #FFFFFF;
 }   
 
+.btn-default:focus,
+.btn-default:hover {
+  background-color: #FF9AAB;
+  border:1px solid #FF9AAB;
+  color:#000
+}
+
 .panel-heading {
     border-bottom: 1px solid rgba(0, 0, 0, 0);
     border-top-left-radius: 3px;
