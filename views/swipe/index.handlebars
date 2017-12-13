@@ -18,8 +18,12 @@
         <img src="/img/No-more-puppers" width="600" id="petImg" class="img-rounded">
         <h1 id="petId">No more Pets</h1>
       {{else}}
+      <a id="petProfile" href="/prifile/pet/{{pet.id}}">
       <img src="/profile_pics/{{pet.profileImage}}" id="petImg" class="target-pet img-rounded">
       <h1 id="petId">{{pet.id}}</h1>
+    </a>
+
+      <p1 id="petName">{{pet.name}}</p1>
       {{/if}}
     </div>
     <div class="col-sm-3">
@@ -50,6 +54,8 @@ function yesFunction() {
         else{
           document.getElementById("petImg").src = `/profile_pics/${response.pet.profileImage}`;
           document.getElementById("petId").innerHTML = response.pet.id;
+          document.getElementById("petName").innerHTML = response.pet.name;
+          document.getElementById("petProfile").href = `/profile/pet/${response.pet.id}`;
         } 
       }
     });
@@ -73,6 +79,8 @@ function noFunction() {
         else{
           document.getElementById("petImg").src = `/profile_pics/${response.pet.profileImage}`;
           document.getElementById("petId").innerHTML = response.pet.id;
+          document.getElementById("petName").innerHTML = response.pet.name;
+          document.getElementById("petProfile").href = `/profile/pet/${response.pet.id}`;
         } 
       }
     });
