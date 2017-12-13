@@ -5,5 +5,10 @@ module.exports = (sequelize, DataTypes) => {
   }
 });
 
+  Connection.associate = (models) => {
+    models.Connection.belongsTo(models.User);
+    models.Connection.belongsTo(models.Pet);
+  };
+
   return Connection;
 };
